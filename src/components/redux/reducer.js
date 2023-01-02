@@ -1,3 +1,6 @@
+import { createReducer } from '@reduxjs/toolkit';
+import { deleteContact, addContact, changeFilter } from './actions';
+
 const contactsIntoBook = [
   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
   { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
@@ -15,24 +18,28 @@ const initContactsFromStorage = () => {
 
 const contactsinitialState = initContactsFromStorage();
 
-export const contactsReducer = (state = contactsinitialState, action) => {
-  switch (action.type) {
-    case 'contacts/deleteContact':
-      return state.filter(contact => contact.id !== action.payload);
-    case 'contacts/addContact':
-      return [action.payload, ...state];
-    default:
-      return state;
-  }
-};
+export const contactsReducer = createReducer(contactsinitialState, {
+  [addContact]: (state, action) => {
+    return [action.payload, ...state];
+  },
+  [deleteContact]: (state, action) => {
+    return state.filter(contact => contact.id !== action.payload);
+  },
+});
 
 const filterInitialState = '';
 
-export const filtersReducer = (state = filterInitialState, action) => {
-  switch (action.type) {
-    case 'filter/changeFilter':
-      return action.payload;
-    default:
-      return state;
-  }
-};
+export const filterReducer = createReducer(filterInitialState, {
+  [changeFilter]: (_, action) => {
+    return action.payload;
+  },
+});
+
+// export const filtersReducer = (state = filterInitialState, action) => {
+//   switch (action.type) {
+//     case changeFilter.type:
+//       return action.payload;
+//     default:
+//       return state;
+//   }
+// };
