@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilter } from 'components/redux/selectors';
-import { changeFilter } from 'components/redux/actions';
+import { changeFilter } from 'components/redux/filterSlice';
 import {
   ContactsTitle,
   FormLabel,
