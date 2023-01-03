@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact } from 'components/redux/contactsSlice';
 import {
@@ -15,9 +15,9 @@ export const ContactsList = () => {
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
   const getVisibleContacts = () => {
     const normalizedFilter = filter.toLowerCase();

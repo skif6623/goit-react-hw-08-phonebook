@@ -8,19 +8,19 @@ const contactsIntoBook = [
   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
 ];
 
-const initContactsFromStorage = () => {
-  const savedStorageContacts = localStorage.getItem('contacts');
-  if (savedStorageContacts !== null) {
-    return JSON.parse(savedStorageContacts);
-  }
-  return contactsIntoBook;
-};
+// const initContactsFromStorage = () => {
+//   const savedStorageContacts = localStorage.getItem('contacts');
+//   if (savedStorageContacts !== null) {
+//     return JSON.parse(savedStorageContacts);
+//   }
+//   return contactsIntoBook;
+// };
 
-const contactsinitialState = initContactsFromStorage();
+// const contactsinitialState = initContactsFromStorage();
 
 export const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: contactsinitialState,
+  initialState: contactsIntoBook,
   reducers: {
     addContact: {
       reducer(state, action) {
