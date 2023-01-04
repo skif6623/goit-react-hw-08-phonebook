@@ -11,18 +11,13 @@ import { getFilter, getContacts } from 'components/redux/selectors';
 
 export const ContactsList = () => {
   const contacts = useSelector(getContacts);
-
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
 
   const getVisibleContacts = () => {
     const normalizedFilter = filter.toLowerCase();
 
-    return contacts.filter(contact =>
+    return contacts.storageContacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
