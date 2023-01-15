@@ -29,7 +29,7 @@ export const ContactsEditor = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    const doubleContact = contacts.storageContacts.filter(
+    const doubleContact = contacts.items.filter(
       contact => contact.name === values.name
     );
     doubleContact.length > 0
