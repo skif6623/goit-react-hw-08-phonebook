@@ -9,6 +9,8 @@ import { ContactsFilter } from '../ContactsFilter/ContactsFilter';
 import { GlobalStyle } from '../GlobalStyle';
 import { BookApp } from './App.styled';
 
+import { ColorRing } from 'react-loader-spinner';
+
 export const App = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
@@ -22,7 +24,18 @@ export const App = () => {
     <BookApp>
       <ContactsEditor />
       <ContactsFilter />
-      {isLoading && !error && <b>Loading contacts...</b>}
+      {isLoading && !error && (
+        <ColorRing
+          height="50"
+          width="50"
+          wrapperStyle={{
+            margin: '0 auto',
+            marginBottom: 20,
+            display: 'block',
+          }}
+          colors={['#2196f3', '#ff0000cf', '#2196f3', '#ff0000cf', '#2196f3']}
+        />
+      )}
       <ContactsList />
       <GlobalStyle />
     </BookApp>

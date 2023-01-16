@@ -7,6 +7,7 @@ import {
   DeleteBtn,
 } from './ContactsList.styled';
 import { getFilter, getContacts } from 'components/redux/selectors';
+import { Box } from 'components/Box';
 
 export const ContactsList = () => {
   const contacts = useSelector(getContacts);
@@ -28,15 +29,16 @@ export const ContactsList = () => {
       {filteredContacts.map(({ name, number, id }) => {
         return (
           <ContactsItem key={id}>
-            <ContactName>
-              {name}: <ContactNumber>{number}</ContactNumber>
-            </ContactName>
-            <DeleteBtn
-              type="button"
-              onClick={() => dispatch(deleteContacts(id))}
-            >
-              Delete
-            </DeleteBtn>
+            <ContactName>{name}:</ContactName>
+            <Box display="flex">
+              <ContactNumber>{number}</ContactNumber>
+              <DeleteBtn
+                type="button"
+                onClick={() => dispatch(deleteContacts(id))}
+              >
+                Delete
+              </DeleteBtn>
+            </Box>
           </ContactsItem>
         );
       })}

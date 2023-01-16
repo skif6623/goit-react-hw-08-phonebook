@@ -15,12 +15,13 @@ export const ContactsItem = styled.li`
 export const ContactName = styled.p`
   font-family: sans-serif;
   font-weight: 500;
+  font-size: 14px;
   line-height: 2;
   letter-spacing: 0.06em;
 `;
 
 export const ContactNumber = styled.span`
-  margin-left: 10px;
+  margin-right: 10px;
   font-family: sans-serif;
   font-weight: 700;
   font-size: 18px;
