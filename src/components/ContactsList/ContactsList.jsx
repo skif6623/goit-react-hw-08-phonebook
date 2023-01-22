@@ -1,12 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContacts } from 'components/redux/operations';
+import { deleteContacts } from 'redux/operations';
 import {
   ContactsItem,
   ContactName,
   ContactNumber,
   DeleteBtn,
 } from './ContactsList.styled';
-import { selectFilter, selectContacts } from 'components/redux/selectors';
+import { selectFilter, selectContacts } from 'redux/selectors';
 import { Box } from 'components/Box';
 
 export const ContactsList = () => {
