@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'components/redux/operations';
-import { getError, getIsLoading } from 'components/redux/selectors';
+import { selectError, selectIsLoading } from 'components/redux/selectors';
 
 import { ContactsEditor } from '../ContactsEditor/ContactsEditor';
 import { ContactsList } from '../ContactsList/ContactsList';
@@ -13,8 +13,8 @@ import { ColorRing } from 'react-loader-spinner';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  const isLoading = useSelector(selectError);
+  const error = useSelector(selectIsLoading);
 
   useEffect(() => {
     dispatch(fetchContacts());

@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { getFilter } from 'components/redux/selectors';
+import { selectFilter } from 'components/redux/selectors';
 import { changeFilter } from 'components/redux/filterSlice';
 import {
   ContactsTitle,
@@ -9,7 +9,7 @@ import {
 import { Box } from '../Box';
 
 export const ContactsFilter = () => {
-  const filter = useSelector(getFilter);
+  const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
 
   const handleChange = e => {

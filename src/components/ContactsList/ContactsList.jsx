@@ -6,12 +6,12 @@ import {
   ContactNumber,
   DeleteBtn,
 } from './ContactsList.styled';
-import { getFilter, getContacts } from 'components/redux/selectors';
+import { selectFilter, selectContacts } from 'components/redux/selectors';
 import { Box } from 'components/Box';
 
 export const ContactsList = () => {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
 
   const getVisibleContacts = () => {

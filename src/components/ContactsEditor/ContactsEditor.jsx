@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'components/redux/selectors';
+import { selectContacts } from 'components/redux/selectors';
 import { addContacts } from 'components/redux/operations';
 import toast, { Toaster } from 'react-hot-toast';
 import {
@@ -25,7 +25,7 @@ const initialValues = {
 };
 
 export const ContactsEditor = () => {
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
