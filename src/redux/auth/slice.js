@@ -34,9 +34,16 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
       })
       .addCase(logOut.rejected, (state, action) => state)
+      .addCase(refreshUser.pending, (state, action) => {
+        state.isRefreshing = true;
+      })
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(refreshUser.rejected, (state, action) => {
+        state.isRefreshing = false;
       }),
 });
 
