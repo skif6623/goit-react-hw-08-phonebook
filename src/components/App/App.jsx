@@ -9,7 +9,7 @@ import { PrivateRoute } from 'components/PrivateRoute';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from 'components/Layout/Layout';
 
-import { ContactsApp } from 'pages/Contacts';
+import { ContactsPage } from 'pages/ContactsPage/ContactsPage';
 import { Register } from 'pages/Register';
 import { Login } from 'pages/Login';
 
@@ -39,7 +39,7 @@ export const App = () => {
           />
           <Route
             path="contacts"
-            element={<PrivateRoute component={ContactsApp} redirectTo="/" />}
+            element={<PrivateRoute component={ContactsPage} redirectTo="/" />}
           />
         </Route>
         <Route path="*" element={<div>Неправильний маршрут</div>} />

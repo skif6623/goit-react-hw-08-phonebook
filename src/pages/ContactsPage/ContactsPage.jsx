@@ -4,7 +4,8 @@ import { useEffect } from 'react';
 
 import { fetchContacts } from 'redux/operations';
 
-import { BookApp } from 'components/App/App.styled';
+import { Container } from '@mui/material';
+import { BookApp } from 'pages/ContactsPage/ContactsPage.styled';
 import { ContactsEditor } from 'components/ContactsEditor/ContactsEditor';
 import { ContactsFilter } from 'components/ContactsFilter/ContactsFilter';
 import { ContactsList } from 'components/ContactsList/ContactsList';
@@ -12,7 +13,7 @@ import { GlobalStyle } from 'components/GlobalStyle';
 
 import { ColorRing } from 'react-loader-spinner';
 
-export const ContactsApp = () => {
+export const ContactsPage = () => {
   const dispatch = useDispatch();
   const { isLoading } = useContacts();
   const { error } = useContacts();
@@ -22,23 +23,25 @@ export const ContactsApp = () => {
   }, [dispatch]);
 
   return (
-    <BookApp>
-      <ContactsEditor />
-      <ContactsFilter />
-      {isLoading && !error && (
-        <ColorRing
-          height="50"
-          width="50"
-          wrapperStyle={{
-            margin: '0 auto',
-            marginBottom: 20,
-            display: 'block',
-          }}
-          colors={['#2196f3', '#ff0000cf', '#2196f3', '#ff0000cf', '#2196f3']}
-        />
-      )}
-      <ContactsList />
-      <GlobalStyle />
-    </BookApp>
+    <Container>
+      <BookApp>
+        <ContactsEditor />
+        <ContactsFilter />
+        {isLoading && !error && (
+          <ColorRing
+            height="50"
+            width="50"
+            wrapperStyle={{
+              margin: '0 auto',
+              marginBottom: 20,
+              display: 'block',
+            }}
+            colors={['#2196f3', '#ff0000cf', '#2196f3', '#ff0000cf', '#2196f3']}
+          />
+        )}
+        <ContactsList />
+        <GlobalStyle />
+      </BookApp>
+    </Container>
   );
 };

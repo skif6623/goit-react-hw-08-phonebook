@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
-export const BookApp = styled.div`
-  width: 500px;
-  margin: 0 auto;
-  padding: 40px;
+export const BookApp = styled.main`
+  margin-top: 120px;
+  padding: 80px 80px 80px;
 
   background-color: #f9f9f9;
   border-radius: 4px;

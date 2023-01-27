@@ -9,15 +9,11 @@ export const AppBarComponent = () => {
   const { isLoggedIn } = useAuth();
 
   return (
-    <header>
-      <AppBar>
-        <Toolbar>
-          <Navigation />
-          <Box sx={{ ml: 'auto' }}>
-            {isLoggedIn ? <UserMenu /> : <AuthNav />}
-          </Box>
-        </Toolbar>
-      </AppBar>
-    </header>
+    <AppBar>
+      <Toolbar>
+        <Navigation />
+        <Box sx={{ ml: 'auto' }}>{isLoggedIn ? <UserMenu /> : <AuthNav />}</Box>
+      </Toolbar>
+    </AppBar>
   );
 };
