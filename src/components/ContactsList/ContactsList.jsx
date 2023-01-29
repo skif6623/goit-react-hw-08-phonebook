@@ -30,13 +30,19 @@ export const ContactsList = () => {
         return (
           <ContactsItem key={id}>
             <ContactName>{name}:</ContactName>
-            <Box display="flex">
+            <Box display="flex" gridGap={10}>
               <ContactNumber>{number}</ContactNumber>
               <DeleteBtn
                 type="button"
                 onClick={() => dispatch(deleteContacts(id))}
               >
                 Delete
+              </DeleteBtn>
+              <DeleteBtn
+                type="button"
+                onClick={() => dispatch(deleteContacts(id))}
+              >
+                Edit
               </DeleteBtn>
             </Box>
           </ContactsItem>

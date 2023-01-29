@@ -7,7 +7,6 @@ import { fetchContacts } from 'redux/operations';
 import { Container } from '@mui/material';
 import { BookApp } from 'pages/ContactsPage/ContactsPage.styled';
 import { ContactsEditor } from 'components/ContactsEditor/ContactsEditor';
-import { ContactsFilter } from 'components/ContactsFilter/ContactsFilter';
 import { ContactsList } from 'components/ContactsList/ContactsList';
 import { GlobalStyle } from 'components/GlobalStyle';
 
@@ -26,7 +25,6 @@ export const ContactsPage = () => {
     <Container>
       <BookApp>
         <ContactsEditor />
-        <ContactsFilter />
         {isLoading && !error && (
           <ColorRing
             height="50"
