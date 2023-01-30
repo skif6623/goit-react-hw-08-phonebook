@@ -35,6 +35,7 @@ export const ModalWindow = ({ closeModal, user }) => {
           user={user}
           title="edit"
           closeModal={closeModal}
+          buttonTitle="Edit Contact"
         />
       </Modal>
     </Overlay>,

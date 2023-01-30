@@ -6,10 +6,15 @@ import {
   ContactsItem,
   ContactName,
   ContactNumber,
-  DeleteBtn,
+  ContactsMsg,
+  ContactsMsgSpan,
 } from './ContactsList.styled';
 import { selectFilter, selectContacts } from 'redux/selectors';
 import { Box } from 'components/Box';
+
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 export const ContactsList = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,33 +39,41 @@ export const ContactsList = () => {
   return (
     <>
       {isOpen && <ModalWindow user={currentContact} closeModal={closeModal} />}
-      <ul>
-        {filteredContacts.map(({ name, number, id }) => {
-          return (
-            <ContactsItem key={id}>
-              <ContactName>{name}:</ContactName>
-              <Box display="flex" gridGap={10}>
-                <ContactNumber>{number}</ContactNumber>
-                <DeleteBtn
-                  type="button"
-                  onClick={() => dispatch(deleteContacts(id))}
-                >
-                  Delete
-                </DeleteBtn>
-                <DeleteBtn
-                  type="button"
-                  onClick={() => {
-                    openModal();
-                    setCurrentContact({ id, name, number });
-                  }}
-                >
-                  Edit
-                </DeleteBtn>
-              </Box>
-            </ContactsItem>
-          );
-        })}
-      </ul>
+      {filteredContacts.length > 0 ? (
+        <ul>
+          {filteredContacts.map(({ name, number, id }) => {
+            return (
+              <ContactsItem key={id}>
+                <ContactName>{name}:</ContactName>
+                <Box display="flex" gridGap={10}>
+                  <ContactNumber>{number}</ContactNumber>
+                  <IconButton
+                    color="info"
+                    aria-label="edit"
+                    onClick={() => {
+                      openModal();
+                      setCurrentContact({ id, name, number });
+                    }}
+                  >
+                    <EditIcon />
+                  </IconButton>
+                  <IconButton
+                    aria-label="delete"
+                    onClick={() => dispatch(deleteContacts(id))}
+                  >
+                    <DeleteIcon color="error" />
+                  </IconButton>
+                </Box>
+              </ContactsItem>
+            );
+          })}
+        </ul>
+      ) : (
+        <ContactsMsg>
+          <ContactsMsgSpan>Sorry...</ContactsMsgSpan>You haven't added any
+          contacts yet. Hope you fix this soon.
+        </ContactsMsg>
+      )}
     </>
   );
 };

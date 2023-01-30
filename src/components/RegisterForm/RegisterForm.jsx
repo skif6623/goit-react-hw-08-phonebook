@@ -42,7 +42,7 @@ export const RegisterForm = () => {
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{
-              my: 8,
+              my: 16,
               mx: 4,
               display: 'flex',
               flexDirection: 'column',

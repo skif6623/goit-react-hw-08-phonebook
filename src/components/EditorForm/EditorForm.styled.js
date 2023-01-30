@@ -12,6 +12,8 @@ export const ContactsTitle = styled.h1`
 `;
 
 export const AddForm = styled(Form)`
+  margin: 0 auto;
+  max-width: 500px;
   margin-bottom: 50px;
 `;
 

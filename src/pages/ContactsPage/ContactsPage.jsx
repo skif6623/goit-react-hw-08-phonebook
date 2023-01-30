@@ -34,7 +34,7 @@ export const ContactsPage = () => {
               marginBottom: 20,
               display: 'block',
             }}
-            colors={['#2196f3', '#ff0000cf', '#2196f3', '#ff0000cf', '#2196f3']}
+            colors={['#2196f3', '#2196f3', '#2196f3', '#2196f3', '#2196f3']}
           />
         )}
         <ContactsList />

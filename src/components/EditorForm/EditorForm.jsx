@@ -8,7 +8,7 @@ import {
   FormInput,
   FormBtn,
   Error,
-} from 'components/ContactsEditor/ContactsEditor.styled';
+} from 'components/EditorForm/EditorForm.styled';
 import { Box } from '../Box';
 import { Formik, Field, ErrorMessage } from 'formik';
 import toast, { Toaster } from 'react-hot-toast';
@@ -23,8 +23,10 @@ const schema = yup.object().shape({
 export const EditorForm = ({
   action,
   title,
-  user = { name: '', number: '', id: false },
+  user = { name: '', number: '', id: null },
   closeModal,
+  buttonTitle,
+  noScroll,
 }) => {
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
@@ -36,17 +38,19 @@ export const EditorForm = ({
 
   const handleSubmit = (values, { resetForm }) => {
     const valueWithId = { ...values, id: user.id };
+    if (user.id) {
+      dispatch(action(valueWithId));
+      closeModal();
+      return;
+    }
     const doubleContact = contacts.filter(
       contact => contact.name === values.name
     );
     doubleContact.length > 0
       ? toast.error(`${values.name} is alredy in contacts.`)
-      : !user.id
-      ? dispatch(action(values))
-      : dispatch(action(valueWithId));
+      : dispatch(action(values));
 
     resetForm();
-    closeModal && closeModal();
   };
 
   return (
@@ -74,7 +78,7 @@ export const EditorForm = ({
             <ErrorMessage name="number" />
           </Box>
 
-          <FormBtn type="submit">Add Contact</FormBtn>
+          <FormBtn type="submit">{buttonTitle}</FormBtn>
         </AddForm>
       </Formik>
       <Toaster position="bottom-right" />

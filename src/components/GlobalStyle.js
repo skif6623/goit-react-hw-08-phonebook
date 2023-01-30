@@ -7,6 +7,9 @@ body {
   font-family: 'Roboto';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('https://cdn.pixabay.com/photo/2012/03/03/23/06/wall-21534_960_720.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 code {
