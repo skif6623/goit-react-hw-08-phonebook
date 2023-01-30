@@ -11,6 +11,11 @@ export const deleteContactsFulfilledReducer = (state, action) => {
   state.items.splice(index, 1);
 };
 
+export const editContactsFulfilledReducer = (state, action) => {
+  const index = state.items.findIndex(item => item.id === action.payload.id);
+  state.items.splice(index, 1, action.payload);
+};
+
 export const anyPendingReducer = state => {
   state.isLoading = true;
 };

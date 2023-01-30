@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const BookApp = styled.main`
   margin-top: 120px;
   padding: 80px 80px 80px;
+  height: 100vh;
 
   background-color: #f9f9f9;
   border-radius: 4px;

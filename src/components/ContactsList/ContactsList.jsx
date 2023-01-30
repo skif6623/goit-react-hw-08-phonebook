@@ -20,6 +20,8 @@ export const ContactsList = () => {
 
   const closeModal = () => setIsOpen(false);
 
+  const openModal = () => setIsOpen(true);
+
   const getVisibleContacts = () => {
     const normalizedFilter = filter.toLowerCase();
 
@@ -48,8 +50,8 @@ export const ContactsList = () => {
                 <DeleteBtn
                   type="button"
                   onClick={() => {
-                    setIsOpen(true);
-                    setCurrentContact({ name, number });
+                    openModal();
+                    setCurrentContact({ id, name, number });
                   }}
                 >
                   Edit

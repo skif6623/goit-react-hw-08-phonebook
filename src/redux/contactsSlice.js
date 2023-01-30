@@ -1,15 +1,21 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { addContacts, fetchContacts, deleteContacts } from './operations';
+import {
+  addContacts,
+  fetchContacts,
+  deleteContacts,
+  editContacts,
+} from './operations';
 import {
   fetchContactsFulfilledReducer,
   addContactsFulfilledReducer,
   deleteContactsFulfilledReducer,
+  editContactsFulfilledReducer,
   anyPendingReducer,
   anyRejectedReducer,
   anyFulfilledReducer,
 } from './contactsSliceReducer';
 
-const extraActions = [addContacts, fetchContacts, deleteContacts];
+const extraActions = [addContacts, fetchContacts, deleteContacts, editContacts];
 const getActions = type => isAnyOf(...extraActions.map(action => action[type]));
 
 const contactsIntoBook = {
@@ -26,6 +32,7 @@ const contactsSlice = createSlice({
       .addCase(fetchContacts.fulfilled, fetchContactsFulfilledReducer)
       .addCase(addContacts.fulfilled, addContactsFulfilledReducer)
       .addCase(deleteContacts.fulfilled, deleteContactsFulfilledReducer)
+      .addCase(editContacts.fulfilled, editContactsFulfilledReducer)
       .addMatcher(getActions('pending'), anyPendingReducer)
       .addMatcher(getActions('rejected'), anyRejectedReducer)
       .addMatcher(getActions('fulfilled'), anyFulfilledReducer);
