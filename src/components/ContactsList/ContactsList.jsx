@@ -16,6 +16,16 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
+const noScroll = () => {
+  const body = document.querySelector('body');
+  body.classList.add('no-scroll');
+};
+
+const letScroll = () => {
+  const body = document.querySelector('body');
+  body.classList.remove('no-scroll');
+};
+
 export const ContactsList = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentContact, setCurrentContact] = useState(null);
@@ -23,7 +33,10 @@ export const ContactsList = () => {
   const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
 
-  const closeModal = () => setIsOpen(false);
+  const closeModal = () => {
+    setIsOpen(false);
+    letScroll();
+  };
 
   const openModal = () => setIsOpen(true);
 
@@ -51,6 +64,7 @@ export const ContactsList = () => {
                     color="info"
                     aria-label="edit"
                     onClick={() => {
+                      noScroll();
                       openModal();
                       setCurrentContact({ id, name, number });
                     }}
@@ -59,7 +73,9 @@ export const ContactsList = () => {
                   </IconButton>
                   <IconButton
                     aria-label="delete"
-                    onClick={() => dispatch(deleteContacts(id))}
+                    onClick={() => {
+                      dispatch(deleteContacts(id));
+                    }}
                   >
                     <DeleteIcon color="error" />
                   </IconButton>

@@ -12,6 +12,10 @@ body {
   background-size: cover;
 }
 
+.no-scroll {
+  overflow: hidden
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

@@ -35,7 +35,7 @@ export const ContactsMsg = styled.p`
   font-weight: 500;
 `;
 
-export const ContactsMsgSpan = styled.p`
+export const ContactsMsgSpan = styled.span`
   display: block;
   margin-bottom: 10px;
   text-align: center;
